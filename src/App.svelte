@@ -1,30 +1,29 @@
 <script>
-	export let name;
+  import { Router, Link, Route } from "svelte-routing";
+  import Nav from "./components/Nav.svelte";
+  import Footer from "./components/Footer.svelte";
+  import ContentWrapper from "./components/ContentWrapper.svelte";
+  import Anime from "./components/Anime.svelte";
+  import Manga from "./components/Manga.svelte";
+
+  export let url = '';
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<Router url={url} basePath="/">
+  <Nav />
+  <main>
+    <ContentWrapper>
+      <Route path="/manga" component={Manga} />
+      <Route path="/" component={Anime} />
+    </ContentWrapper>
+  </main>
+  <Footer />
+</Router>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+  main {
+    position: relative;
+    padding: 2rem 0;
+    min-height: calc(100vh - var(--footerHeight) - var(--navHeight));
+  }
 </style>
