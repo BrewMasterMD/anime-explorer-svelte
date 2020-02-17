@@ -11,7 +11,8 @@
   .wrapper {
     position: relative;
     height: 400px;
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
     margin: 0 auto;
   }
   .load {

@@ -61,5 +61,6 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    cursor: pointer;
   }
 </style>

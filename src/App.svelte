@@ -3,18 +3,17 @@
   import Nav from "./components/Nav.svelte";
   import Footer from "./components/Footer.svelte";
   import ContentWrapper from "./components/ContentWrapper.svelte";
-  import Anime from "./components/Anime.svelte";
-  import Manga from "./components/Manga.svelte";
+  import Top from "./components/Top.svelte";
 
   export let url = '';
 </script>
 
-<Router url={url} basePath="/">
+<Router url={url}>
   <Nav />
   <main>
     <ContentWrapper>
-      <Route path="/manga" component={Manga} />
-      <Route path="/" component={Anime} />
+      <Route path="/manga"><Top type="manga" /></Route>
+      <Route path="/"><Top type="anime" /></Route>
     </ContentWrapper>
   </main>
   <Footer />
