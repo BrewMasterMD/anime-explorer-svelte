@@ -1,4 +1,5 @@
 :root {
+  --staticTextColor: #fdfffc;
   --bg: #fdfffc;
   --text: #020100;
   --blue: #235789;
@@ -8,6 +9,11 @@
   --footerHeight: 60px;
   font-size: 10px;
   box-sizing: border-box;
+}
+
+:root.dark__theme {
+  --bg: #17181a;
+  --text: #fdfffc;
 }
 
 html * {

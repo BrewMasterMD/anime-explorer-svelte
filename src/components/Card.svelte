@@ -1,4 +1,5 @@
 <script>
+  import { Link } from "svelte-routing";
   export let card;
   export let type;
 </script>
@@ -8,12 +9,14 @@
     <span>{card.rank}</span>
   </div>
   <div class="image-container">
-    <a href="{card.url}" target="_blank">
-      <img src="{card.image_url}" alt="{card.title} cover" />
-    </a>
+    <Link to="/{type}/{card.mal_id}">
+    <img src="{card.image_url}" alt="{card.title} cover" />
+    </Link>
   </div>
   <div class="card-content">
-    <h3><a href="{card.url}" target="_blank">{card.title}</a></h3>
+    <h3>
+      <Link to="/{type}/{card.mal_id}">{card.title}</Link>
+    </h3>
     <div class="stats">
       <p>
         {card.type} ({type === 'anime' ? `${card.episodes || '?'} eps` :
@@ -66,11 +69,11 @@
     margin-bottom: 1rem;
   }
 
-  h3 a:hover {
+  h3 :global(a:hover) {
     text-decoration: underline;
   }
 
-  a {
+  li :global(a) {
     text-decoration: none;
     color: var(--blue);
     font-weight: bold;

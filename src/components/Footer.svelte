@@ -5,7 +5,7 @@
 <style>
   footer {
     background-color: var(--blue);
-    color: var(--bg);
+    color: var(--staticTextColor);
     height: var(--footerHeight);
     display: flex;
     align-items: center;

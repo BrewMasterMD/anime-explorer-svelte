@@ -1,9 +1,16 @@
 <script>
   import { Link } from "svelte-routing";
   import ContentWrapper from "./ContentWrapper.svelte";
+  import ThemeToggler from "./ThemeToggler.svelte";
 
   function getProps({ location, href, isPartiallyCurrent, isCurrent }) {
-    const isActive = href === "/" ? isCurrent : isPartiallyCurrent || isCurrent;
+    let isActive;
+
+    if (location.pathname === "/" && href.includes('anime')) {
+      isActive = true;
+    } else {
+      isActive = href === "/" ? isCurrent : isPartiallyCurrent || isCurrent;
+    }
 
     if (isActive) {
       return { class: "active" };
@@ -15,10 +22,17 @@
 <header>
   <nav>
     <ContentWrapper>
-      <ul>
-        <li><Link to="/" getProps={getProps}>anime</Link></li>
-        <li><Link to="manga" getProps={getProps}>manga</Link></li>
-      </ul>
+      <div>
+        <ul>
+          <li>
+            <Link to="/anime" getProps={getProps}>anime</Link>
+          </li>
+          <li>
+            <Link to="manga" getProps={getProps}>manga</Link>
+          </li>
+        </ul>
+        <ThemeToggler />
+      </div>
     </ContentWrapper>
   </nav>
 </header>
@@ -27,7 +41,7 @@
   nav {
     font-weight: 300;
     background-color: var(--blue);
-    color: var(--bg);
+    color: var(--staticTextColor);
     height: var(--navHeight);
   }
 
@@ -62,5 +76,12 @@
     justify-content: center;
     height: 100%;
     cursor: pointer;
+  }
+
+  div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 </style>

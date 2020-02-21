@@ -4,6 +4,7 @@
   import Footer from "./components/Footer.svelte";
   import ContentWrapper from "./components/ContentWrapper.svelte";
   import Top from "./components/Top.svelte";
+  import Details from "./components/Details.svelte";
 
   export let url = '';
 </script>
@@ -12,8 +13,21 @@
   <Nav />
   <main>
     <ContentWrapper>
-      <Route path="/manga"><Top type="manga" /></Route>
-      <Route path="/"><Top type="anime" /></Route>
+      <Route path="/manga/:id" let:params>
+        <Details type="manga" id={params.id} />
+      </Route>
+      <Route path="/anime/:id" let:params>
+        <Details type="anime" id={params.id} />
+      </Route>
+      <Route path="/manga">
+        <Top type="manga" />
+      </Route>
+      <Route path="/anime">
+        <Top type="anime" />
+      </Route>
+      <Route path="/">
+        <Top type="anime" />
+      </Route>
     </ContentWrapper>
   </main>
   <Footer />
