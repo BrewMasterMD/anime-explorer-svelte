@@ -1,7 +1,7 @@
 {
   "name": "anime-explorer",
   "version": "1.0.0",
-  "homepage": "https://brewmastermd.github.io/anime-explorer-svelte",
+  "homepage": "https://brewmastermd.github.io/anime-explorer-svelte/",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
